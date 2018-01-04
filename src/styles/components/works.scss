@@ -1,0 +1,37 @@
+.works {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__add {
+        flex: 1;
+    }
+
+    &__file {
+        position: relative;
+        display: inline-block;
+
+        &-input {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            opacity: 0;
+            height: 100%;
+            cursor: pointer;
+        }
+        &-label {
+            display: inline-block;
+            height: 35px;
+            line-height: 35px;
+            padding-left: 35px;
+            background-image: url("~img/img-add.svg");
+            background-repeat: no-repeat;
+            color: #6c9c5a;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+    }
+}

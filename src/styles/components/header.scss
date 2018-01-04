@@ -1,0 +1,17 @@
+header {
+    background: $green;
+    color: #fff;
+    padding: 24px 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.title {
+    font-size: 28px;
+}
+
+.logout {
+    color: #fff;
+}

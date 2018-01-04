@@ -1,0 +1,13 @@
+.about {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.skills {
+  display: flex;
+  margin-left: -88px;
+  flex-wrap: wrap;
+  flex: 1;
+}

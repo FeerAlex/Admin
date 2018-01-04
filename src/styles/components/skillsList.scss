@@ -1,0 +1,24 @@
+.skills {
+
+    &__list {
+        margin-bottom: 19px;
+        margin-left: 88px;
+    }
+
+    &__title {
+        margin-bottom: 8px;
+    }
+
+    &__table {
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        margin-left: 12px;
+    }
+}
+.error {
+    border: 1px solid firebrick;
+    outline: none;
+}
+.addButton {
+    display: none;
+}

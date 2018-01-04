@@ -1,0 +1,57 @@
+body, html {
+  height: 100%;
+}
+  
+body {
+  background: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  background: lighten(#ccc, 50%);
+  font-family: 'Roboto';
+  font-weight: 400;
+  color: #566358;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  background: url('~img/water.jpg') center no-repeat;
+  background-size: cover;
+  z-index: 2;
+  padding: 47px 30px 40px 30px;
+  display: flex;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(#fff, .85);
+    z-index: -1;
+  }
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  
+  li {
+    list-style: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

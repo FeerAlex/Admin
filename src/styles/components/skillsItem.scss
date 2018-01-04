@@ -1,0 +1,32 @@
+.skills {
+
+    &__col {
+
+        &-name {
+            padding: 7px;
+            width: 111px;
+        }
+
+        &-percent {
+            width: 29px;
+            text-align: center;
+        }
+    }
+
+    &__input {
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+        width: 46px;
+        height: 32px;
+        border: none;
+        outline: none;
+        text-align: center;
+        color: $darkgreen;
+        font-family: 'Roboto';
+        font-weight: 400;
+    }
+
+    &__remove {
+        display: none;
+    }
+}
