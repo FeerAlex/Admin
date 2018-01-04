@@ -13,8 +13,6 @@
     div {{ validation.firstError('newName') }}
     div {{ validation.firstError('newDate') }}
     div {{ validation.firstError('newDesc') }}
-    ul(v-for="article in articles")
-      li {{article}}
 </template>
 
 <script>

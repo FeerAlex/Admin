@@ -17,8 +17,6 @@
     div {{ validation.firstError('newName') }}
     div {{ validation.firstError('newTech') }}
     div {{ validation.firstError('newLink') }}
-    ul(v-for="work in works")
-      li {{work}}
 </template>
 
 <script>
