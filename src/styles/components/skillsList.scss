@@ -3,6 +3,10 @@
     &__list {
         margin-bottom: 19px;
         margin-left: 88px;
+
+        @media (max-width: 500px) {
+            margin-bottom: 21px;
+        }
     }
 
     &__title {

@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      text: this.val,
+      text: '',
     }
   },
   methods: {
@@ -24,22 +24,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .input {
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    width: 300px;
-    height: 45px;
-    padding: 0 18px;
-    border: none;
-    outline: none;
-    display: block;
-    margin-bottom: 20px;
-    font-family: 'Roboto';
-    font-size: 16px;
-
-    @include placeholder {
-        color: rgba($blue, .5);
-    }
-  }
-</style>
+<style lang="scss" src="styles/input.scss" scoped></style>

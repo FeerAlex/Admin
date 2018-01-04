@@ -22,8 +22,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="styles/tabs.scss" scoped>
-
-</style>
-
-// 145
+<style lang="scss" src="styles/tabs.scss" scoped></style>

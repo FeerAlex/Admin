@@ -13,8 +13,7 @@
 export default {
   components: {
     appHeader: require('./components/header.vue'),
-    appTabs: require('./components/tabs.vue'),
-    appAbout: require('./components/about.vue'),
+    appTabs: require('./components/tabs.vue')
   }
 }
 </script>

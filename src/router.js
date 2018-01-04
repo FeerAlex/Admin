@@ -6,15 +6,15 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
-        component: require('./components/about.vue')
+        component: require('./views/about.vue')
     },
     {
         path: '/works',
-        component: require('./components/works.vue')
+        component: require('./views/works.vue')
     },
     {
         path: '/blog',
-        component: require('./components/blog.vue')
+        component: require('./views/blog.vue')
     }
 ];
 

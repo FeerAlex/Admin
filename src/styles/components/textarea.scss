@@ -4,7 +4,7 @@
     width: 500px;
     height: 166px;
     padding: 14px 18px;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0);
     outline: none;
     display: block;
     margin-bottom: 20px;
@@ -14,6 +14,14 @@
 
     @include placeholder {
         color: rgba($blue, .5);
+    }
+
+    &.error {
+        border-color: red;
+        background-image: url('~img/warning.svg');
+        background-size: 15px;
+        background-repeat: no-repeat;
+        background-position: 95% center;
     }
 
     // трек скроллбара

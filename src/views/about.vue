@@ -34,9 +34,9 @@ export default {
     this.fetchSkills();
   },
   components: {
-    skillsList: require('./skillsList.vue'),
-    saveBtn: require('./saveBtn.vue'),
-    appTitle: require('./title.vue'),
+    skillsList: require('../components/skillsList.vue'),
+    saveBtn: require('../components/saveBtn.vue'),
+    appTitle: require('../components/title.vue'),
   }
 }
 </script>

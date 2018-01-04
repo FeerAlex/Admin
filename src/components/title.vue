@@ -16,5 +16,9 @@ export default {
     margin: 0;
     font-weight: 400;
     margin-bottom: 43px;
+
+    @media(max-width: 500px) {
+      margin-bottom: 23px;
+    }
   }
 </style>

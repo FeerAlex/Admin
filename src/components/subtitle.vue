@@ -17,6 +17,10 @@ export default {
     margin-bottom: 16px;
     font-size: 16px;
 
+    @media(max-width: 500px) {
+      font-size: 14px;
+    }
+
     &--about {
       margin-bottom: 8px;
     }
