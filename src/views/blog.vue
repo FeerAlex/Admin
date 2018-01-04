@@ -7,21 +7,24 @@
         span.error-mes {{ validation.firstError('newName') }}
         app-input(
           :placeholder="'Название'"
-          @change="val => newName = val"
+          :val="newName"
+          @updateInput="val => newName = val"
           :class="{error: validation.hasError('newName')}"
         )
       .blog__input
         span.error-mes {{ validation.firstError('newDate') }}
         app-input(
           :placeholder="'Дата'"
-          @change="val => newDate = val"
+          :val="newDate"
+          @updateInput="val => newDate = val"
           :class="{error: validation.hasError('newDate')}"
         )
       .blog__input
         span.error-mes {{ validation.firstError('newDesc') }}
         app-textarea(
           :placeholder="'Содержание'"
-          @change="val => newDesc = val"
+          :val="newDesc"
+          @updateInput="val => newDesc = val"
           :class="{error: validation.hasError('newDesc')}"
         )
     save-btn(

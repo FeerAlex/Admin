@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+var path                = require('path');
+var webpack             = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -77,7 +78,26 @@ module.exports = {
             loader: 'svg-fill-loader'
           }
         ]
-      }
+      },
+      {
+        test: /^(?!.*\.generated\.ttf$).*\.ttf$/,
+        use: [
+          'css-loader',
+          'fontface-loader'
+        ],
+      },
+      {
+        test: /\.generated.(ttf|eot|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'fonts/',
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
     ]
   },
   resolve: {
@@ -85,6 +105,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       'styles': path.resolve(__dirname, 'src/styles/components'),
       'img': path.resolve(__dirname, 'src/assets/img'),
+      'fonts': path.resolve(__dirname, 'src/assets/fonts'),
     },
     extensions: ['*', '.js', '.vue', '.json']
   },

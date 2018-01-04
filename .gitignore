@@ -3,6 +3,7 @@ node_modules/
 dist/
 npm-debug.log
 yarn-error.log
+prepros-6.config
 
 # Editor directories and files
 .idea

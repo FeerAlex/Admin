@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss" scoped>
   .subtitle {
+    font-family: 'Roboto Medium';
     font-weight: 500;
     margin: 0;
     margin-bottom: 16px;

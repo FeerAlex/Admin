@@ -1,8 +1,9 @@
 <template lang="pug">
-  input(type="text"
+  input(
+    type="text"
     :placeholder="placeholder"
-    v-model="text"
-    v-on:input="updateValue(text)"
+    @input="updateValue($event.target.value)"
+    :value="val"
   ).input
 </template>
 
@@ -10,15 +11,11 @@
 export default {
   props: {
     placeholder: String,
-  },
-  data() {
-    return {
-      text: '',
-    }
+    val: String
   },
   methods: {
-    updateValue: function (value) {
-      this.$emit('change', value)
+    updateValue(value) {
+      this.$emit('updateInput', value)
     }
   }
 }

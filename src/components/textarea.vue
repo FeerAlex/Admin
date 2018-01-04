@@ -1,8 +1,8 @@
 <template lang="pug">
   textarea(
     :placeholder="placeholder"
-    v-model="text"
-    v-on:input="updateValue(text)"
+    :value="val"
+    @input="updateValue($event.target.value)"
   ).input
 </template>
 
@@ -12,14 +12,9 @@ export default {
     placeholder: String,
     val: String
   },
-  data() {
-    return {
-      text: this.val,
-    }
-  },
   methods: {
     updateValue: function (value) {
-      this.$emit('change', value)
+      this.$emit('updateInput', value)
     }
   }
 }

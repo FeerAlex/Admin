@@ -7,27 +7,35 @@
         span.error-mes {{ validation.firstError('newName') }}
         app-input(
           :placeholder="'Название проекта'"
-          @change="val => newName = val"
+          :val="newName"
+          @updateInput="val => newName = val"
           :class="{error: validation.hasError('newName')}"
         )
       .works__input
         span.error-mes {{ validation.firstError('newTech') }}
         app-input(
           :placeholder="'Технологии'"
-          @change="val => newTech = val"
+          :val="newTech"
+          @updateInput="val => newTech = val"
           :class="{error: validation.hasError('newTech')}"
         )
       .works__input
         span.error-mes {{ validation.firstError('newLink') }}
         app-input(
           :placeholder="'Ссылка'"
-          @change="val => newLink = val"
+          :val="newLink"
+          @updateInput="val => newLink = val"
           :class="{error: validation.hasError('newLink')}"
         )
-      .works__file
-        input(type="file" id="input-file"
-        ).works__file-input
-        label(for="input-file").works__file-label Загрузить картинку
+      .works__input
+        span.error-mes {{ validation.firstError('newImg') }}
+        .works__file
+          input(
+            type="file"
+            id="input-file"
+            @change="onFileChange"
+          ).works__file-input
+          label(for="input-file").works__file-label Загрузить картинку
     save-btn(
       :label="'Добавить'"
       @saveClick="addWork"
@@ -49,13 +57,17 @@ export default {
     },
     newLink(value) {
       return Validator.value(value).required('Отсутствует ссылка!').url('Некорректная ссылка!');
+    },
+    newImg(value) {
+      return Validator.value(value).required('Отсутствует изображение!');
     }
   },
   data() {
     return {
       newName: '',
       newTech: '',
-      newLink: ''
+      newLink: '',
+      newImg: ''
     }
   },
   computed: {
@@ -72,14 +84,21 @@ export default {
           id: Math.round(Math.random() * 1000),
           name: this.newName,
           tech: this.newTech,
-          link: this.newLink
+          link: this.newLink,
+          img: this.newImg
         });
 
         this.newName = '';
         this.newTech = '';
         this.newLink = '';
+        this.newImg = '';
         this.validation.reset();
       })
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.newImg = files[0].name;
     }
   },
   created() {
