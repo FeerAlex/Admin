@@ -58,3 +58,13 @@ ul{
 * {
   box-sizing: border-box;
 }
+
+.error-mes {
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: 2px;
+  display: inline-block;
+  color: rgb(155, 0, 0);
+}

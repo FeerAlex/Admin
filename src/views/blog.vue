@@ -3,16 +3,31 @@
     app-title(:label="'Блог'")
     app-sub-title(:label="'Добавить запись'")
     .blog__add
-      app-input(:placeholder="'Название'" @change="val => newName = val" :class="{error: validation.hasError('newName')}")
-      app-input(:placeholder="'Дата'" @change="val => newDate = val" :class="{error: validation.hasError('newDate')}")
-      app-textarea(:placeholder="'Содержание'" @change="val => newDesc = val" :class="{error: validation.hasError('newDesc')}")
+      .blog__input
+        span.error-mes {{ validation.firstError('newName') }}
+        app-input(
+          :placeholder="'Название'"
+          @change="val => newName = val"
+          :class="{error: validation.hasError('newName')}"
+        )
+      .blog__input
+        span.error-mes {{ validation.firstError('newDate') }}
+        app-input(
+          :placeholder="'Дата'"
+          @change="val => newDate = val"
+          :class="{error: validation.hasError('newDate')}"
+        )
+      .blog__input
+        span.error-mes {{ validation.firstError('newDesc') }}
+        app-textarea(
+          :placeholder="'Содержание'"
+          @change="val => newDesc = val"
+          :class="{error: validation.hasError('newDesc')}"
+        )
     save-btn(
       :label="'Добавить'"
       @saveClick="addArticle"
     )
-    div {{ validation.firstError('newName') }}
-    div {{ validation.firstError('newDate') }}
-    div {{ validation.firstError('newDesc') }}
 </template>
 
 <script>
@@ -23,14 +38,14 @@ export default {
   mixins: [require('simple-vue-validator').mixin],
   validators: {
     newName(value) {
-      return Validator.value(value).required('Заполните поле');
+      return Validator.value(value).required('Заголовок отсутствует!');
     },
     newDate(value) {
-      return Validator.value(value).required('Заполните поле');
+      return Validator.value(value).required('Дата отсутствует!');
       // return Validator.value(value).required('Заполните поле').regex('^\d{1,2}.\d{1,2}.\d{4}$', 'Неверный формат');
     },
     newDesc(value) {
-      return Validator.value(value).required('Заполните поле');
+      return Validator.value(value).required('Описание отсутствует!');
     }
   },
   data() {

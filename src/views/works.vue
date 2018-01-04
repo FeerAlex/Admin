@@ -3,9 +3,27 @@
     app-title(:label="'Мои работы'")
     app-sub-title(:label="'Добавить работу'")
     .works__add
-      app-input(:placeholder="'Название проекта'" @change="val => newName = val" :class="{error: validation.hasError('newName')}")
-      app-input(:placeholder="'Технологии'" @change="val => newTech = val" :class="{error: validation.hasError('newTech')}")
-      app-input(:placeholder="'Ссылка'" @change="val => newLink = val" :class="{error: validation.hasError('newLink')}")
+      .works__input
+        span.error-mes {{ validation.firstError('newName') }}
+        app-input(
+          :placeholder="'Название проекта'"
+          @change="val => newName = val"
+          :class="{error: validation.hasError('newName')}"
+        )
+      .works__input
+        span.error-mes {{ validation.firstError('newTech') }}
+        app-input(
+          :placeholder="'Технологии'"
+          @change="val => newTech = val"
+          :class="{error: validation.hasError('newTech')}"
+        )
+      .works__input
+        span.error-mes {{ validation.firstError('newLink') }}
+        app-input(
+          :placeholder="'Ссылка'"
+          @change="val => newLink = val"
+          :class="{error: validation.hasError('newLink')}"
+        )
       .works__file
         input(type="file" id="input-file"
         ).works__file-input
@@ -14,9 +32,6 @@
       :label="'Добавить'"
       @saveClick="addWork"
     )
-    div {{ validation.firstError('newName') }}
-    div {{ validation.firstError('newTech') }}
-    div {{ validation.firstError('newLink') }}
 </template>
 
 <script>
@@ -27,13 +42,13 @@ export default {
   mixins: [require('simple-vue-validator').mixin],
   validators: {
     newName(value) {
-      return Validator.value(value).required('Заполните поле');
+      return Validator.value(value).required('Отсутствует заголовок!');
     },
     newTech(value) {
-      return Validator.value(value).required('Заполните поле');
+      return Validator.value(value).required('Отсутствуют технологии!');
     },
     newLink(value) {
-      return Validator.value(value).required('Заполните поле').url('Некорректный url');
+      return Validator.value(value).required('Отсутствует ссылка!').url('Некорректная ссылка!');
     }
   },
   data() {
