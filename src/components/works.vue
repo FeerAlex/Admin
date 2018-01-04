@@ -3,9 +3,9 @@
     app-title(:label="'Мои работы'")
     app-sub-title(:label="'Добавить работу'")
     .works__add
-      app-input(:placeholder="'Название проекта'" :value="newName" v-model="newName")
-      app-input(:placeholder="'Технологии'" :value="newTech" v-model="newTech")
-      app-input(:placeholder="'Ссылка'" :value="newLink" v-model="newLink")
+      app-input(:placeholder="'Название проекта'" @change="val => newName = val")
+      app-input(:placeholder="'Технологии'" @change="val => newTech = val")
+      app-input(:placeholder="'Ссылка'" @change="val => newLink = val")
       .works__file
         input(type="file" id="input-file"
         ).works__file-input
@@ -14,6 +14,8 @@
       :label="'Добавить'"
       @saveClick="addWork"
     )
+    ul(v-for="work in works")
+      li {{work}}
 </template>
 
 <script>
@@ -42,8 +44,6 @@ export default {
       });
 
       this.newName = "";
-      this.newTech = "";
-      this.newLink = "";
     }
   },
   created() {

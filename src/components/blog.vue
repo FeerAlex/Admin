@@ -3,9 +3,9 @@
     app-title(:label="'Блог'")
     app-sub-title(:label="'Добавить запись'")
     .blog__add
-      app-input(:placeholder="'Название'" :value="newName" v-model="newName")
-      app-input(:placeholder="'Дата'" :value="newDate" v-model="newDate")
-      app-textarea(:placeholder="'Содержание'" :value="newDesc" v-model="newDesc")
+      app-input(:placeholder="'Название'" @change="val => newName = val")
+      app-input(:placeholder="'Дата'" @change="val => newDate = val")
+      app-textarea(:placeholder="'Содержание'" @change="val => newDesc = val")
     save-btn(
       :label="'Добавить'"
       @saveClick="addArticle"
