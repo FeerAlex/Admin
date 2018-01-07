@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import 'fonts/Roboto-Regular.ttf';
-import 'fonts/Roboto-Medium.ttf';
 
 export default {
   components: {

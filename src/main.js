@@ -4,6 +4,9 @@ import Vuex from 'vuex';
 import store from './store';
 import router from './router';
 
+import 'fonts/Roboto-Regular.ttf';
+import 'fonts/Roboto-Medium.ttf';
+
 new Vue({
   el: '#app',
   store,

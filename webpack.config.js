@@ -82,6 +82,7 @@ module.exports = {
       {
         test: /^(?!.*\.generated\.ttf$).*\.ttf$/,
         use: [
+          'vue-style-loader',
           'css-loader',
           'fontface-loader'
         ],
