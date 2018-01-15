@@ -1,13 +1,14 @@
 <template lang="pug">
   .skills__list
-    app-sub-title(:label="skillsType").subtitle--about
+    app-sub-title(:label="skillsType.title").subtitle--about
     table.skills__table
       skills-item(
         v-for="skill in skills"
         :key="skill.id"
         :skill="skill"
-        v-if="checkSkillType(skillsType) == skill.type"
+        v-if="skillsType._id == skill.skillType"
         @removeSkill="removeSkill"
+        @updateSkill="updateSkill"
       )
     .addButton
       button(
@@ -35,7 +36,7 @@ export default {
     }
   },
   props: {
-      skillsType: String,
+      skillsType: Object,
       skills: Array
   },
   data() {
@@ -44,7 +45,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['addNewSkill', 'removeExistedSkill']),
+    ...mapMutations(['addNewSkill', 'removeExistedSkill', 'updateExistedSkill']),
     addSkill() {
       this.$validate().then(success => {
         if(!success) return;
@@ -62,15 +63,8 @@ export default {
     removeSkill(skillID) {
       this.removeExistedSkill(skillID)
     },
-    checkSkillType(skillType) {
-      switch (skillType) {
-        case 'Frontend' :
-          return 1;
-        case 'Workflow' :
-          return 2;
-        case 'Backend' :
-          return 3;
-      }
+    updateSkill(skillID, percents) {
+      this.updateExistedSkill({skillID, percents})
     }
   },
   components: {

@@ -1,3 +1,6 @@
+import {HTTP} from '../../http-common';
+import qs from 'qs';
+
 const works = {
     state: {
       data: []
@@ -9,18 +12,35 @@ const works = {
     },
     mutations: {
       addNewWork(state, work) {
-        state.data.push(work);
+        let data = new FormData();
+        data.append('name', work.name);
+        data.append('tech', work.tech);
+        data.append('link', work.link);
+        data.append('image', work.img);
+
+        HTTP.post(`api/works`, data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then(res => {
+          // console.log(res);
+          // state.data = res.data.works;
+        })
+        .catch(e => {
+          console.log(e);
+        })
       },
     },
     actions: {
       fetchWorks({ state }) {
-        return fetch("/src/works.json")
+        return HTTP.get(`api/works`, state.data)
           .then(res => {
-            return res.json();
+            state.data = res.data.works;
           })
-          .then(data => {
-            state.data = data;
-          });
+          .catch(e => {
+            console.log(e);
+          })
       }
     }
   }

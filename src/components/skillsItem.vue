@@ -2,7 +2,7 @@
   tr.skills__row
     td.skills__col-name {{skill.name}}
     td.skills__col-value
-        input(type="text" :value="skill.percents").skills__input
+        input(type="text" :value="skill.percents" @change="updateSkill($event.target.value)").skills__input
     td.skills__col-percent %
     td.skills__col-btn
         button(
@@ -18,7 +18,10 @@ export default {
   },
   methods: {
     removeSkill() {
-        this.$emit('removeSkill', this.skill.id)
+      this.$emit('removeSkill', this.skill._id)
+    },
+    updateSkill(percents) {
+      this.$emit('updateSkill', this.skill._id, percents)
     }
   }
 }

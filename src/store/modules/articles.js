@@ -1,3 +1,6 @@
+import {HTTP} from '../../http-common';
+import qs from 'qs';
+
 const articles = {
   state: {
     data: []
@@ -9,17 +12,29 @@ const articles = {
   },
   mutations: {
     addNewArticle(state, article) {
-      state.data.push(article);
+      HTTP.post(`api/blog`, qs.stringify({
+        title: article.title,
+        date: article.date,
+        desc: article.desc
+      }))
+      .then(res => {
+        if(res.status === 201) {
+          state.data.push(article);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+      })
     },
   },
   actions: {
     fetchArticles({ state }) {
-      return fetch("/src/articles.json")
+      return HTTP.get(`api/blog`)
         .then(res => {
-          return res.json();
+          state.data = res.data.articles;
         })
-        .then(data => {
-          state.data = data;
+        .catch(e => {
+          console.log(e);
         });
     }
   }

@@ -10,6 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "cors": "^2.8.4",
     "fontface-loader": "0.0.8",
     "normalize.css": "^7.0.0",
     "pug": "^2.0.0-rc.4",

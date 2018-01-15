@@ -1,3 +1,6 @@
+import {HTTP} from '../../http-common';
+import qs from 'qs';
+
 const skills = {
   state: {
     data: []
@@ -13,17 +16,32 @@ const skills = {
     },
     removeExistedSkill(state, skillID) {
       state.data = state.data.filter(item => item.id != skillID)
-    }
+    },
+    updateExistedSkill(state, skill) {
+      state.data = state.data.map(function(el) {
+        if(el._id == skill.skillID) {
+          el.percents = skill.percents;
+        }
+        return el;
+      })
+    },
   },
   actions: {
     fetchSkills({ state }) {
-      return fetch("/src/data.json")
+      return HTTP.get(`api/skills`)
         .then(res => {
-          return res.json();
+          state.data = res.data.skills;
         })
-        .then(data => {
-          state.data = data;
+        .catch(e => {
+          console.log(e);
         });
+    },
+    updateSkills({ state }) {
+      HTTP.put(`api/skills`, state.data)
+      .then(res => {})
+      .catch(e => {
+        console.log(e);
+      })
     }
   }
 }

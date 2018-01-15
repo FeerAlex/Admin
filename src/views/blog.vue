@@ -4,12 +4,12 @@
     app-sub-title(:label="'Добавить запись'")
     .blog__add
       .blog__input
-        span.error-mes {{ validation.firstError('newName') }}
+        span.error-mes {{ validation.firstError('newTitle') }}
         app-input(
           :placeholder="'Название'"
-          :val="newName"
-          @updateInput="val => newName = val"
-          :class="{error: validation.hasError('newName')}"
+          :val="newTitle"
+          @updateInput="val => newTitle = val"
+          :class="{error: validation.hasError('newTitle')}"
         )
       .blog__input
         span.error-mes {{ validation.firstError('newDate') }}
@@ -40,7 +40,7 @@ import { Validator } from 'simple-vue-validator';
 export default {
   mixins: [require('simple-vue-validator').mixin],
   validators: {
-    newName(value) {
+    newTitle(value) {
       return Validator.value(value).required('Заголовок отсутствует!');
     },
     newDate(value) {
@@ -53,7 +53,7 @@ export default {
   },
   data() {
     return {
-      newName: '',
+      newTitle: '',
       newDate: '',
       newDesc: '',
     }
@@ -69,13 +69,12 @@ export default {
         if(!success) return;
 
         this.addNewArticle({
-          id: Math.round(Math.random() * 1000),
-          name: this.newName,
+          title: this.newTitle,
           date: this.newDate,
           desc: this.newDesc
         });
 
-        this.newName = "";
+        this.newTitle = "";
         this.newDate = "";
         this.newDesc = "";
         this.validation.reset();

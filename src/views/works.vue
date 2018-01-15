@@ -31,6 +31,8 @@
         span.error-mes {{ validation.firstError('newImg') }}
         .works__file
           input(
+            name="image"
+            accept="image/*"
             type="file"
             id="input-file"
             @change="onFileChange"
@@ -81,7 +83,6 @@ export default {
         if(!success) return;
 
         this.addNewWork({
-          id: Math.round(Math.random() * 1000),
           name: this.newName,
           tech: this.newTech,
           link: this.newLink,
@@ -96,13 +97,13 @@ export default {
       })
     },
     onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
+      let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
-      this.newImg = files[0].name;
+      this.newImg = files[0];
     }
   },
   created() {
-    this.fetchWorks();
+    // this.fetchWorks();
   },
   components: {
     saveBtn: require('../components/saveBtn.vue'),
