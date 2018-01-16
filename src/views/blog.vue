@@ -14,7 +14,7 @@
       .blog__input
         span.error-mes {{ validation.firstError('newDate') }}
         app-input(
-          :placeholder="'Дата'"
+          :placeholder="'Дата (пример: 23.05.2017)'"
           :val="newDate"
           @updateInput="val => newDate = val"
           :class="{error: validation.hasError('newDate')}"
